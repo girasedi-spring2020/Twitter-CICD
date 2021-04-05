@@ -100,7 +100,8 @@ def encode_token(user_id, token_type):
     )
 
 def decode_token(token):
-    payload = jwt.decode(token, get_env_var("secret_key"))
+    #payload = jwt.decode(token, get_env_var("secret_key"))
+    payload = jwt.decode(token, get_env_var("secret_key"), algorithms=["HS256"])
     print("decode_token:", payload)
     return payload["sub"]
 
@@ -182,8 +183,8 @@ def login():
             refresh_token = encode_token(userid, "refresh")
             print('type(access_token):', type(access_token))
             response_object = {
-                "access_token": access_token.decode(),
-                "refresh_token": refresh_token.decode(),
+                "access_token": access_token,
+                "refresh_token": refresh_token,
             }
             #return response_object, 200
             #return response_object
@@ -225,7 +226,7 @@ def fastlogin():
                     # issue a new access token, keep the same refresh token
                     access_token = encode_token(userid, "access")
                     response_object = {
-                        "access_token": access_token.decode(),
+                        "access_token": access_token,
                         "refresh_token": refresh_token,
                     }
                     return jsonify((response_object, status.HTTP_200_OK))
