@@ -18,7 +18,7 @@
 ## Clone the project
 
 ```sh
-git clone https://github.com/Vidhi-95/TwitterApp.git
+git clone git@github.com:girasedi-spring2020/Twitter-CICD.git
 ```
 
 ## Requirements
