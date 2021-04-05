@@ -1,7 +1,7 @@
 
 
 resource "aws_lb" "alb" {
-  name               = "flask-react-alb-1"
+  name               = "flask-react-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${var.cluster-security-group}"]
